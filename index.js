@@ -6,13 +6,19 @@ require("dotenv").config();
 const routes = require("./routes/app");
 const app = express();
 const cors = require("cors");
+const corsConfig = {
+  origin: "*",
+  credential: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}
+app.options("", cors(corsConfig));
 const { log } = require("console");
 const server = http.createServer(app);
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cors());
+app.use(cors(corsConfig));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
