@@ -16,7 +16,9 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
-mongoose.connect(process.env.MONGO_URL, {
+const MONGO_URL = "mongodb+srv://fonil58878:d3vWj5PLMoFikOir@democrud.dsghyn1.mongodb.net/";
+
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -33,7 +35,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", routes);
 
-const PORT = process.env.PORT;
+const PORT = 8080;
 // console.log(PORT)
 
 server.listen(PORT, (err) => {
