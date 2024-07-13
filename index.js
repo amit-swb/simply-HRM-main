@@ -6,25 +6,18 @@ require("dotenv").config();
 const routes = require("./routes/app");
 const app = express();
 const cors = require("cors");
-const corsConfig = {
-  origin: "*",
-  credential: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}
-app.options("", cors(corsConfig));
+
 const { log } = require("console");
 const server = http.createServer(app);
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cors(corsConfig));
+app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
-const MONGO_URL = "mongodb+srv://fonil58878:d3vWj5PLMoFikOir@democrud.dsghyn1.mongodb.net/";
-
-mongoose.connect(MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
