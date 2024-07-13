@@ -3,11 +3,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const routes = require("../routes/app");
+const routes = require("./routes/app");
 const app = express();
 const cors = require("cors");
 
-const { log } = require("console");
 const server = http.createServer(app);
 
 app.use(bodyParser.json());
@@ -34,8 +33,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", routes);
 
-const PORT = 8080;
-// console.log(PORT)
+const PORT = process.env.PORT || 8080;
 
 server.listen(PORT, (err) => {
   if (err) throw err;
