@@ -68,7 +68,7 @@ module.exports.employee_login = async (req, res) => {
       const validPassword = await bcrypt.compare(
         req.body.password,
         user.password
-      );  
+      );
       const token = jwt.sign({ user }, process.env.SECRET_KEY);
       if (!validPassword) {
         res
@@ -88,7 +88,6 @@ module.exports.employee_login = async (req, res) => {
   }
 };
 
-//Employee update
 
 module.exports.update_employee_details = async (req, res) => {
   try {
@@ -124,6 +123,7 @@ module.exports.update_employee_details = async (req, res) => {
           new: true,
         }
       );
+      console.log("updateDetails", updateDetails);
       if (updateDetails) {
         res.send(
           response.common(

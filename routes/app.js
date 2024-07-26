@@ -3,8 +3,14 @@ const authentiction = require("../controller/auth/authentiction");
 const companyManagement = require("../controller/companyManagement/company");
 const employeeManagement = require("../controller/employeeManagement/employee");
 const hrManagement = require("../controller/hrManagement/hr");
-const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+// const multer = require("multer");
+// const upload = multer({ dest: "uploads/" });
+
+const { storage } = require('../storage/storage');
+const multer = require('multer');
+const upload = multer({ storage });
+
+
 //  user
 
 router.post("/registration", upload.none(), authentiction.registration);
@@ -41,9 +47,10 @@ router.post(
 );
 router.post(
   "/update_employee_details/:id",
-  upload.none(),
+  upload.single('employee_image'),
   employeeManagement.update_employee_details
 );
+
 router.delete(
   "/employee_delete/:userID",
   upload.none(),
