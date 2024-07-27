@@ -6,10 +6,9 @@ const hrManagement = require("../controller/hrManagement/hr");
 // const multer = require("multer");
 // const upload = multer({ dest: "uploads/" });
 
-const { storage } = require('../storage/storage');
-const multer = require('multer');
+const { storage } = require("../storage/storage");
+const multer = require("multer");
 const upload = multer({ storage });
-
 
 //  user
 
@@ -47,7 +46,7 @@ router.post(
 );
 router.post(
   "/update_employee_details/:id",
-  upload.single('employee_image'),
+  upload.single("employee_image"),
   employeeManagement.update_employee_details
 );
 
