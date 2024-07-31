@@ -12,9 +12,25 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
+    folder: "Hrm",
+    allowedFormats: ["jpeg", "png", "jpg"],
+  },
+});
+
+const storageEmployee = new CloudinaryStorage({
+  cloudinary,
+  params: {
     folder: "employee_img",
     allowedFormats: ["jpeg", "png", "jpg"],
   },
 });
 
-module.exports = { storage };
+const storageHr = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'hr_img',
+    allowedFormats: ['jpg', 'png', 'jpeg']
+  }
+});
+
+module.exports = { storage, storageEmployee, storageHr };

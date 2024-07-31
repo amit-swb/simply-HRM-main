@@ -7,8 +7,12 @@ const hrManagement = require("../controller/hrManagement/hr");
 // const upload = multer({ dest: "uploads/" });
 
 const { storage } = require("../storage/storage");
+const { storageEmployee } = require("../storage/storage");
+const { storageHr } = require("../storage/storage");
 const multer = require("multer");
 const upload = multer({ storage });
+const uploadEmployee = multer({ storageEmployee });
+const uploadHr = multer({ storageHr });
 
 //  user
 
@@ -46,7 +50,7 @@ router.post(
 );
 router.post(
   "/update_employee_details/:id",
-  upload.single("employee_image"),
+  uploadEmployee.single("employee_image"),
   employeeManagement.update_employee_details
 );
 
@@ -75,7 +79,7 @@ router.get("/get_hr/:id", upload.none(), hrManagement.get_hr);
 router.post("/hr_login", upload.none(), hrManagement.hr_login);
 router.post(
   "/update_hr_details/:id",
-  upload.none(),
+  uploadHr.single("hr_image"),
   hrManagement.update_hr_details
 );
 router.delete("/hr_delete/:id", upload.none(), hrManagement.hr_delete);
