@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "Hrm",
+    folder: "hrm",
     allowedFormats: ["jpeg", "png", "jpg"],
   },
 });
